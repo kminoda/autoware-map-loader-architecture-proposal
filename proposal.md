@@ -1,14 +1,17 @@
+We, TIER IV, would like to propose a new architecture for point cloud map loading.
+
 # Introduction
-We, TIER IV, would like to propose a new architecture for map loading.
+Current Autoware is not scalable in terms of the size of the map, since it loads the whole point cloud map at once. As far as we know, the size limit of point cloud map in the current Autoware is around 2GB, which is defined by the maximum size of topic message in cycloneDDS. Thus, we are working on a new type of algorithm for loading a point cloud map: dynamic map loading (DML). 
 
-Current Autoware is not scalable in terms of the size of the map, since it loads the whole point cloud map at once. Thus, we are working on a new type of method for loading a point cloud map: dynamic map loading (DML). 
+![](https://user-images.githubusercontent.com/44218668/176372161-1db133ec-ec5c-460e-a678-ddbd38cbbd94.mp4)
 
+Through our experiment, however, it turned out that the current interface is not suitable for efficient DML. For example, the implementation of our prototype DML shown in the above video newly load all the pcd maps within the range of 200m from the ego-vehicle for every several seconds. Ideally speaking, this DML can be improved by reusing the overlapped pcd grids with the previous loading area. 
+![](./figures/differential_area_loading.gif)
 
-Through our experiment, however, it turned out that the current interface is not suitable for efficient DML. 今のアーキテクチャでDMLをしようとすると、数秒に一回周囲の地図を毎回読み込む必要があり、これがメモリ帯域などの計算リソースを圧迫してしまう。これは回避するには、差分読込を実装する必要があるが、現在のインターフェースでこれを実現することはできない（削除ができないから）。
-
+Unfortunately, the current map interface cannot provide sufficient information for client nodes to handle this complex management of pcd maps.
 Thus, we, TIER IV, would like to propose to the AWF community a new interface for more flexible map loading.
-Note that this is a proposal for an additional interface (service) as an option, and is not intended to remove any current interface.
 
+Note that this is a proposal for an additional interface (service) as an option, and is not intended to remove any current interface.
 Here we also assume that the point cloud map is divided beforehand, e.g. into 20m x 20m grids.
 
 # Proposed architecture
@@ -30,7 +33,6 @@ Since the new interface is just an optional one, you can
 In case you want to load specific area from the map, 
 
 ## Differential area loading
-![Candidate architecture 1](./figures/differential_area_loading.gif)
 
 As mentioned above, area loading is highly inefficient for DML, since the high load computation (SSD read, IO, ND voxelization) runs onboard.
 
