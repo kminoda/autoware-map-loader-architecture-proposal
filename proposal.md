@@ -3,9 +3,9 @@ We, TIER IV, would like to propose a new architecture for point cloud map loadin
 # Introduction
 Current Autoware is not scalable in terms of the size of the map, since it loads the whole point cloud map at once. As far as we know, the size limit of point cloud map in the current Autoware is around 2GB, which is defined by the maximum size of topic message in cycloneDDS. Thus, we are working on a new type of algorithm for loading a point cloud map: dynamic map loading (DML). 
 
-![](https://user-images.githubusercontent.com/44218668/176372161-1db133ec-ec5c-460e-a678-ddbd38cbbd94.mp4)
+https://user-images.githubusercontent.com/44218668/176372161-1db133ec-ec5c-460e-a678-ddbd38cbbd94.mp4
 
-Through our experiment, however, it turned out that the current interface is not suitable for efficient DML. For example, the implementation of our prototype DML (shown in the above video) newly loads all the pcd maps within the range of 200m from the ego-vehicle for every several seconds. Ideally speaking, this DML can be improved by reusing the overlapped pcd grids with the previous loading area. 
+Through our experiment, however, it turned out that the current interface is not suitable for efficient DML. For example, our prototype DML (shown in the above video) newly loads all the pcd maps within the range of 200m from the ego-vehicle for every several seconds. Ideally speaking, this DML can be improved by reusing the overlapped pcd grids with the previous loading area. 
 ![](./figures/differential_area_loading.gif)
 
 Unfortunately, the current map interface cannot provide sufficient information for client nodes to handle this complex management of pcd maps.
