@@ -1,0 +1,3 @@
+string[] ids
+---
+autoware_map_msgs/PCDMapWithID[] pcds
