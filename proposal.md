@@ -26,10 +26,12 @@ Here we briefly introduce possible map loading scenarios and how we can achieve 
 ## Whole map loading
 This is the only scenario that the current Autoware supports, in which the client nodes load the whole available map at once.
 Since the new interface is just an optional one, you can 
+
 <img src="./figures/whole_map_loading.png" alt="drawing" width="400"/>
 
 ## Area loading
 In case you want to load specific area from the map,
+
 <img src="./figures/area_loading.png" alt="drawing" width="400"/>
 
 
