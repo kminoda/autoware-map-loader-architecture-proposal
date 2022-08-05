@@ -32,7 +32,7 @@ Since the new interface is just an optional one, you can
 ## Area loading
 In case you want to load specific area from the map,
 
-<img src="./figures/area_loading.png" alt="drawing" width="400"/>
+<img src="./figures/area_loading_2.png" alt="drawing" width="400"/>
 
 
 ## Differential area loading
