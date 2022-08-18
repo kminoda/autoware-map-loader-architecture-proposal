@@ -41,7 +41,7 @@ Do note that this is different from area query.
 
 
 # Proposed architectures
-We have two proposals, both of which have their pros and cons.
+We have two proposals, both of which have their pros and cons. We would like to ask for your opinions from various perspective.
 
 ## Proposal A: passing ids
 The architecture of the proposal A is shown below. A client that want to use the new interface ("client 1" in the example figure) first subscribes [autoware_map_msgs/msg/PCDMetaInfoArray](https://github.com/kminoda/autoware-map-loader-architecture-proposal/blob/main/autoware_map_msgs/msg/PCDMetaInfoArray.msg) that contains all the metadata of available PCD maps.
