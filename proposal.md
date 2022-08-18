@@ -69,6 +69,9 @@ In addition, when mode is set to differential area loading, client 1 additionall
 
 The differential DML is expected to use this mode.
 
+![Proposed architecture](./figures/proposed_architecture_b.drawio.svg)
+
+
 ### Pros:
 - necessary and sufficient for achieving the above-mentioned scenarios (not too general)
 - able to reduce the implementation cost of the client side
