@@ -79,7 +79,7 @@ The differential DML is expected to use this mode.
 - able to reduce the implementation cost of the client side
 
 ### Cons:
-- complicated interface and thus more difficult to understand than proposal B
+- complicated interface and thus more difficult to understand than proposal A
 
 
 ## Other candidates that we had in mind
