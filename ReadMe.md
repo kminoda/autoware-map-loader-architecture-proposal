@@ -19,11 +19,11 @@ Note that this is a proposal for an additional interface (service) as an option,
 Here we also assume that the PCD map is divided beforehand, e.g. into 20m x 20m grids.
 
 # Possible map loading scenarios
-Here we briefly introduce possible map loading scenarios and how we can achieve them with the proposed architecture.
+Here we briefly introduce possible map loading scenarios.
 
 ## Whole map loading
 This is the only scenario that the current Autoware supports, in which the client nodes load the whole available map at once.
-Since this proposal architecture has no influence on the existing interface, you can perform whole map loading in the same way as in the current Autoware.
+Since the proposed architectures have no influence on the existing interface, you can perform whole map loading in the same way as in the current Autoware.
 
 <img src="./figures/whole_map_loading.png" alt="drawing" width="400"/>
 
@@ -41,7 +41,7 @@ Do note that this is different from area query.
 
 
 # Proposed architectures
-We have two proposals, both of which have their pros and cons. We would like to ask for your opinions from various perspective.
+We have two proposals, both of which have their pros and cons. We would like to ask for your opinions from various perspective. 
 
 ## Proposal A: passing ids
 The architecture of the proposal A is shown below. A client that want to use the new interface ("client 1" in the example figure) first subscribes [autoware_map_msgs/msg/PCDMetaInfoArray](https://github.com/kminoda/autoware-map-loader-architecture-proposal/blob/main/autoware_map_msgs/msg/PCDMetaInfoArray.msg) that contains all the metadata of available PCD maps.
@@ -80,23 +80,5 @@ The differential DML is expected to use this mode.
 - complicated, more difficult to understand than proposal B
 
 
-# Other architecture candidates
-## Area-query, area-response
-One of the other architectures we had in mind is this. 
-
-
-### Pros
-- Simple
-
-### Cons
-- Requires high computational complexity algorithm for extracting points within the designated area
-
-## Area-query, grids-response
-![Candidate architecture 1](./figures/candidate_architecture_2.drawio.svg)
-
-### Pros
-- Fairly simple
-- 
-
-### Cons
-- Still cannot support differential area loading ()
+## Other candidates that we had in mind
+See [here](./other_candidates.md)
