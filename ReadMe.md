@@ -45,7 +45,7 @@ By reusing the maps that the node already has (shown in grey), the node can sign
 We have two proposals, both of which have their pros and cons. We would like to ask for your opinions from various perspectives. 
 
 ## Proposal A: passing ids
-The architecture of proposal A is shown below. A client that want to use the new interface ("client 1" in the example figure) first subscribes [autoware_map_msgs/msg/PCDMetaInfoArray](./autoware_map_msgs/msg/PCDMetaInfoArray.msg) that contains all the metadata of available PCD maps.
+The architecture of proposal A is shown below. A client that want to use the new interface ("`client 1`" in the example figure) first subscribes [autoware_map_msgs/msg/PCDMetaInfoArray](./autoware_map_msgs/msg/PCDMetaInfoArray.msg) that contains all the metadata of available PCD maps.
 Using this information, the client selects the maps it wants and throw the query to the  `map_loader` with [autoware_map_msgs/srv/LoadPCDMaps](./autoware_map_msgs/srv/LoadPCDMaps.srv). `map_loader` loads the required maps and send them back as a response.
 
 Note that in this case, we are also considering creating a library that covers all three scenarios mentioned above. 
@@ -61,12 +61,12 @@ Note that in this case, we are also considering creating a library that covers a
 
 
 ## Proposal B: passing area and map ids that the client already has
-The architecture of proposal B is shown below. In this proposal, client 1 sends the following two data as a query:
+The architecture of proposal B is shown below. In this proposal, `client 1` sends the following two data as a query:
 - mode (0: area loading, 1: differential area loading)
 - the map area that the client wants (i.e. spherical area)
 
-In addition, when the mode is set to differential area loading, client 1 additionally sends the following query:
-- map ids that client 1 already has
+In addition, when the mode is set to differential area loading, `client 1` additionally sends the following query:
+- map ids that `client 1` already has
 
 The differential DML is expected to use this mode.
 (See also: [autoware_map_msgs/srv/LoadPCDMapsGeneral](./autoware_map_msgs/srv/LoadPCDMapsGeneral.srv))
