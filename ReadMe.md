@@ -44,8 +44,8 @@ Do note that this is different from area query.
 We have two proposals, both of which have their pros and cons. We would like to ask for your opinions from various perspective. 
 
 ## Proposal A: passing ids
-The architecture of the proposal A is shown below. A client that want to use the new interface ("client 1" in the example figure) first subscribes [autoware_map_msgs/msg/PCDMetaInfoArray](https://github.com/kminoda/autoware-map-loader-architecture-proposal/blob/main/autoware_map_msgs/msg/PCDMetaInfoArray.msg) that contains all the metadata of available PCD maps.
-Using this information, the client selects the maps it wants and throw the query to the  `map_loader` with [autoware_map_msgs/srv/LoadPCDMaps](https://github.com/kminoda/autoware-map-loader-architecture-proposal/blob/main/autoware_map_msgs/srv/LoadPCDMaps.srv). `map_loader` loads the required maps and send them back as a response.
+The architecture of the proposal A is shown below. A client that want to use the new interface ("client 1" in the example figure) first subscribes [autoware_map_msgs/msg/PCDMetaInfoArray](./autoware_map_msgs/msg/PCDMetaInfoArray.msg) that contains all the metadata of available PCD maps.
+Using this information, the client selects the maps it wants and throw the query to the  `map_loader` with [autoware_map_msgs/srv/LoadPCDMaps](./autoware_map_msgs/srv/LoadPCDMaps.srv). `map_loader` loads the required maps and send them back as a response.
 
 Note that in this case, we are also considering creating a library that covers all three scenarios mentioned above. 
 
@@ -54,7 +54,7 @@ Note that in this case, we are also considering creating a library that covers a
 
 ### Cons:
 - unnecessarily too general to achieve the above-mentioned scenarios
-- heavier implementation cost for the client side (which can be reduced by the library, but still takes a cost to maintain it)
+- heavier implementation cost for the client side (which can be reduced by the library, but still requires a maintanance cost)
 
 ![Proposed architecture](./figures/proposed_architecture_a.drawio.svg)
 
@@ -68,16 +68,17 @@ In addition, when mode is set to differential area loading, client 1 additionall
 - map ids that the client 1 already has
 
 The differential DML is expected to use this mode.
+(See also: [autoware_map_msgs/srv/LoadPCDMapsGeneral](./autoware_map_msgs/srv/LoadPCDMapsGeneral.srv))
 
 ![Proposed architecture](./figures/proposed_architecture_b.drawio.svg)
 
 
 ### Pros:
-- necessary and sufficient for achieving the above-mentioned scenarios (not too general)
+- necessary and sufficient for achieving the above-mentioned three scenarios (not too general)
 - able to reduce the implementation cost of the client side
 
 ### Cons:
-- complicated, more difficult to understand than proposal B
+- complicated interface and thus more difficult to understand than proposal B
 
 
 ## Other candidates that we had in mind
