@@ -22,13 +22,13 @@ Here we also assume that the PCD map is divided beforehand, e.g. into 20m x 20m 
 # Possible map loading scenarios
 Here we briefly introduce possible map loading scenarios.
 
-## Whole map loading
+## Whole area loading
 This is the only scenario that the current Autoware supports, in which the client nodes load the whole available map at once.
 Since the proposed architectures have no influence on the existing interface, you can perform whole map loading in the same way as in the current Autoware.
 
 <img src="./figures/whole_map_loading.png" alt="drawing" width="400"/>
 
-## Area loading
+## Partial area loading
 This scenario considers a case when a node (e.g. `pose_initializer`) only wants a limited area from the available PCD map. We assume that, given the area query, the node loads the PCD grids that overlap with the area query.
 
 <img src="./figures/area_loading_2.png" alt="drawing" width="400"/>
