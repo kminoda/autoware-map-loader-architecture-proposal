@@ -1,3 +1,4 @@
+WIP
 # Other architecture candidates
 ## Area-query, area-response
 One of the other architectures we had in mind is this. 
