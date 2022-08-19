@@ -28,14 +28,14 @@ Since the proposed architectures have no influence on the existing interface, yo
 <img src="./figures/whole_map_loading.png" alt="drawing" width="400"/>
 
 ## Area loading
-In case you want to load specific area from the map, 
+This scenario considers a case when a node (e.g. `pose_initializer`) only wants a limited area from the available PCD map.
 
 <img src="./figures/area_loading_2.png" alt="drawing" width="400"/>
 
 
 ## Differential area loading
-The differential DML is included in this scenario.
-Do note that this is different from area query.
+In this scenario, a node (e.g. `ndt_scan_matcher`) loads additional PCD grid maps (shown in blue) as well as remove maps that is no longer necessary (shown in red).
+By reusing the maps that the node already has (shown in grey), the node can significantly reduce the computation that occurs in loading and preprocessing the map.
 
 <img src="./figures/differential_area_loading.gif" alt="drawing" width="400"/>
 
