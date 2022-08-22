@@ -45,7 +45,7 @@ By reusing the maps that the node already has (shown in grey), the node can sign
 We have two proposals, both of which have their pros and cons. We would like to ask for your opinions from various perspectives. 
 
 ## Proposal A: passing ids
-The architecture of proposal A is shown below. A client that want to use the new interface ("`client 1`" in the example figure) first subscribes [autoware_map_msgs/msg/PCDMetaInfoArray](./autoware_map_msgs/msg/PCDMetaInfoArray.msg) that contains all the metadata of available PCD maps.
+The architecture of proposal A is shown below. A client that want to use the new interface ("`client 1`" in the example figure) first subscribes a message (see [here](./autoware_map_msgs/msg/PCDMetaInfoArray.msg) for the definition) that contains a dictionary of each grids' ID and its region information.
 Using this information, the client selects the maps it wants and throw the query to the  `map_loader` with [autoware_map_msgs/srv/LoadPCDMaps](./autoware_map_msgs/srv/LoadPCDMaps.srv). `map_loader` loads the required maps and send them back as a response.
 
 Note that in this case, we are also considering creating a library that covers all three scenarios mentioned above. 
@@ -62,13 +62,20 @@ Note that in this case, we are also considering creating a library that covers a
 
 ## Proposal B: passing area and map ids that the client already has
 The architecture of proposal B is shown below. In this proposal, `client 1` sends the following two data as a query:
-- mode (0: area loading, 1: differential area loading)
-- the map area that the client wants (i.e. spherical area)
+1. mode (0: area loading, 1: differential area loading)
+2. the map area that the client wants (i.e. spherical area)
+
+In case of `mode=0`, given the above two data, the `map_loader` returns all the map grids and their IDs that overlaps with the queried area.
 
 In addition, when the mode is set to differential area loading, `client 1` additionally sends the following query:
-- map ids that `client 1` already has
 
-The differential DML is expected to use this mode.
+3. map ids that `client 1` already has
+
+In case of `mode=1`, given the above three data, the `map_loader` returns...
+- the map grids and their IDs (for the grid that overlaps with the queried area and that is not included in the third data)
+- the map grids' IDs (for the grid that overlaps with the queried area and that is included in the third data)
+
+The differential DML is expected to use `mode=1`.
 (See also: [autoware_map_msgs/srv/LoadPCDMapsGeneral](./autoware_map_msgs/srv/LoadPCDMapsGeneral.srv))
 
 ![Proposed architecture](./figures/proposed_architecture_b.drawio.svg)
