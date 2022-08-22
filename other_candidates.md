@@ -27,7 +27,7 @@ The most simple idea for partial area loading is to load all the points within t
 ![Candidate architecture 1](./figures/candidate_architecture_1.drawio.svg)
 
 The whole area loading and partial area loading can be easily achieved with ROS2 topics, but implementing the differential area loading is somewhat more complicated. 
-One of the points we considered in this proposal is to guarantee that each client receives the initial map. This is because the ROS 2 topic is a one-way communication, and depending on the QoS settings and the order in which nodes are activated, it is possible that a client may miss receiving the initial map. Unlike the partial area loading scenario, failure in loading the initial map in differential area loading scenario can be critical for the client node.
+One of the points we considered in this proposal is to guarantee that each client receives the initial map. This is because the ROS 2 topic is a one-way communication, and depending on the QoS settings and the order in which nodes are activated, it is possible that a client may miss receiving the initial map. In differential area loading scenario, unlike the partial area loading scenario, failure in loading the initial map can be critical for the client node.
 
 ### Pros
 - less implementation cost for the clients
