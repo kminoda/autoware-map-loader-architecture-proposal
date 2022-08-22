@@ -5,7 +5,7 @@ Here we briefly explain about other architecture candidates that we had in mind.
 ## Area-query, area-response
 ![Candidate architecture 2](./figures/candidate_architecture_2.drawio.svg)
 
-The most simple idea for partial area loading is to load all the points within the queried area ( $M(t) = \{p|p\in A(t)\}$ where $M(t)$ is a set of points in a map, $p$ is a point, and $A(t)$ is an area query). 
+The most simple idea for partial area loading is to load all the points within the queried area ( $M(t) = \lbrace p|p\in A(t) \rbrace$ where $M(t)$ is a set of points in a map, $p$ is a point, and $A(t)$ is an area query). 
 
 ### Pros
 - simple
