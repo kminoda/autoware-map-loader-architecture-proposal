@@ -10,4 +10,4 @@ Introducing this requirement would simplify the implementation costs of dynamic 
 We would like to propose that the Autoware include the following prerequisite on the pointcloud map:
 - The pointcloud map must be divided into a grid
 
-Here, "divided into a grid" means that, given two sequences $X=\{x_0, x_1, \cdots, x_{m-1}\}$ and $Y=\{y_0, y_1, \cdots, y_{n-1}\}$, the area of any grid can be denoted as $x_i < x < x_{i+1}, y_j < y < y_{j+1}$.
+Here, "divided into a grid" means that, given two sequences $X=\lbrace x_0, x_1, \cdots, x_{m-1} \rbrace$ and $Y=\lbrace y_0, y_1, \cdots, y_{n-1} \rbrace$, the area of any grid can be denoted as $x_i < x < x_{i+1}, y_j < y < y_{j+1}$.
