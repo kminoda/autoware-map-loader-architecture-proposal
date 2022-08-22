@@ -17,7 +17,7 @@ Unfortunately, the current map interface cannot provide sufficient information f
 Thus, we, TIER IV, would like to propose to the AWF community a new interface to enable more flexible map loading.
 
 Note that this is a proposal for an additional interface (service) as an option, and is not intended to remove any current interface.
-Here we also assume that the PCD map is divided beforehand, e.g. into 20m x 20m grids (see [an additional proposal for map dividing format](./map_dividing_format.md)). 
+Here we also assume that the PCD map is divided beforehand, e.g. into 20m x 20m grids (see [an additional proposal for map dividing format](./map_dividing_format.md)).
 
 # Possible map loading scenarios
 Here we briefly introduce possible map loading scenarios.
