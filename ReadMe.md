@@ -37,6 +37,9 @@ This scenario considers a case when a node (e.g. `pose_initializer`) only wants 
 ## Differential area loading
 In this scenario, a node (e.g. `ndt_scan_matcher`) loads additional PCD grid maps (shown in blue) as well as removes maps that are no longer necessary (shown in red) at each step.
 By reusing the maps that the node already has (shown in grey), the node can significantly reduce the computation that occurs in loading and preprocessing the map.
+If we assume that a client node wants a set of map grids $M(t)$ for $t=t$ with differential area loading, the client node at $t=t+1$...
+- loads $M(t+1) \backslash M(t)$
+- unloads $M(t) \backslash M(t+1)$
 
 <img src="./figures/differential_area_loading.gif" alt="drawing" width="400"/>
 
@@ -62,7 +65,7 @@ Note that in this case, we are also considering creating a library that covers a
 
 ## Proposal B: passing area and map ids that the client already has
 The architecture of proposal B is shown below. In this proposal, `client 1` sends the following two data as a query:
-1. mode (0: area loading, 1: differential area loading)
+1. mode (0: partial area loading, 1: differential area loading)
 2. the map area that the client wants (i.e. spherical area)
 
 In case of `mode=0`, given the above two data, the `map_loader` returns all the map grids and their IDs that overlaps with the queried area.
