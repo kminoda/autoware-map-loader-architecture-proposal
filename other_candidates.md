@@ -34,4 +34,4 @@ One of the points we considered in this proposal is to guarantee that each clien
 
 ### Cons
 - may be difficult to guarantee that all the messages are successfully subscribed
-- implementations of multiple client nodes will be dependent (since all the nodes subscribes to one single topic)
+- implementations of multiple client nodes will be dependent (since all the nodes subscribes to one single topic), which can be inefficient especially when the clients request for different map area
